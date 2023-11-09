@@ -1,13 +1,4 @@
 local gfx <const> = playdate.graphics
-local TAGS = {
-    PLAYER = 1,
-    OBSTACLE = 2,
-    ENEMY = 3,
-    COLLECTABLE = 4,
-    GROUND = 5
-}
-
-local wallImage = nil
 
 class("Platform").extends(gfx.sprite)
 
@@ -24,7 +15,7 @@ function Platform:init(xPos, yPos, height, length, isSolid)
     gfx.popContext()
     self:setImage(rectImage)
     self:setCollideRect(0,0, self:getSize())
-    self:setTag(TAGS.OBSTACLE,TAGS.GROUND)
+    -- self:setGroups(TAGS.OBSTACLE,TAGS.GROUND)
     self:add()
 end
 
