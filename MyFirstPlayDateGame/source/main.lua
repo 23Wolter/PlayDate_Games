@@ -2,6 +2,7 @@ import "CoreLibs/object"
 import "CoreLibs/graphics"
 import "CoreLibs/sprites"
 import "CoreLibs/timer"
+import "CoreLibs/ui"
 
 import "scripts/libraries/AnimatedSprite"
 
@@ -17,6 +18,9 @@ TAGS = {
     GROUND = 5
 }
 
+-- tutorial
+crankTutorialHasRun = false
+
 DIRECTION = {
     UP = {x = 0, y = -1},
     DOWN = {x = 0, y = 1},
@@ -29,28 +33,15 @@ Z_INDEX = {
 }
 
 local player = Player(200, 60)
-local platform = Platform(100, 205, 50, 20)
-local platform2 = Platform(200, 205, 50, 20)
-local platform3 = Platform(300, 205, 50, 20)
-local platform4 = Platform(350, 155, 50, 20)
-local platform5 = Platform(200, 235, 400, 20)
+local platform = Platform(80, 205, 50, 20)
+local platform2 = Platform(160, 170, 50, 20)
+local platform3 = Platform(240, 120, 50, 20)
+local platform4 = Platform(320, 70, 50, 20)
+local platform5 = Platform(200, 280, 400, 100)
 
--- Declaring this "gfx" shorthand will make your life easier. Instead of having
--- to preface all graphics calls with "playdate.graphics", just use "gfx."
-local pd <const> = playdate
 local gfx <const> = playdate.graphics
 
--- `playdate.update()` is the heart of every Playdate game.
--- This function is called right before every frame is drawn onscreen.
--- Use this function to poll input, run game logic, and move sprites.
-
 function playdate.update()
-    
-    -- player:fall()
-    -- Call the functions below in playdate.update() to draw sprites and keep
-    -- timers updated. (We aren't using timers in this example, but in most
-    -- average-complexity games, you will.)
-
     gfx.sprite.update()
     playdate.timer.updateTimers()
 
